@@ -2,6 +2,7 @@
 
 [![](https://jitpack.io/v/darkzyrb/kivstore.svg)](https://jitpack.io/#darkzyrb/kivstore)
 
+
 **KivStore** is a lightweight Kotlin library that simplifies working with Android's DataStore by providing a type-safe, delegate-based API for managing preferences. Built on top of Preferences DataStore, it offers a clean and efficient way to store and observe application settings.
 
 ---
@@ -33,8 +34,8 @@ dependencyResolutionManagement {
 2. Add the module(s) you want to your build.gradle.kts:
 
 ```kotlin
-implementation("com.github.darkzyrb.kotpref-kivstore:kivstore:1.2.2")
-implementation("com.github.darkzyrb.kotpref-kivstore:flow-support:1.2.2")
+implementation("com.github.darkzyrb.kivstore:kivstore:v1.0.0")
+implementation("com.github.darkzyrb.kivstore:flow-support:v1.0.0")
 ```
 
 ---
