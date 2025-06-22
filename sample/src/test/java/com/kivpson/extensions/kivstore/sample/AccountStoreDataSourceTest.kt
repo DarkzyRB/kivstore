@@ -2,7 +2,6 @@ package com.kivpson.extensions.kivstore.sample
 
 import androidx.datastore.preferences.core.preferencesOf
 import com.kivpson.extensions.kivstore.KivStore
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.delay
