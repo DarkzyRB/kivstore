@@ -1,0 +1,72 @@
+# --- Android Studio ---
+*.iml
+.idea/
+.gradle/
+build/
+.navigation/
+captures/
+local.properties
+*.keystore
+
+# --- Gradle ---
+.gradle/
+
+# Incluir wrapper de Gradle para JitPack
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradlew
+!gradlew.bat
+
+# --- Build artifacts ---
+**/build/
+**/bin/
+**/gen/
+**/out/
+**/target/
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# --- Logs y caché ---
+*.log
+*.swp
+.DS_Store
+*.orig
+*.bak
+*.tmp
+
+# --- Archivos generados ---
+**/*.pb
+**/.externalNativeBuild/
+**/.cxx/
+**/*.jar
+**/*.class
+
+# --- JitPack temporal files ---
+jitpack/
+.repo/
+
+# --- Entornos virtuales/IDE ---
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# --- Archivos específicos de macOS ---
+**/.DS_Store
+**/._*
+
+# --- Archivos específicos de Windows ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- Archivos de usuario ---
+*.orig
+*.bak
+*.kdev4
+*~
+*.swp
+
+# Añade esto a .gitignore
+local.properties
