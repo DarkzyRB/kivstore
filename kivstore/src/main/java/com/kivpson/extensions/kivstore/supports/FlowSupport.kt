@@ -1,17 +1,20 @@
-package com.kivpson.extensions.kivstore.flow_support
+package com.kivpson.extensions.kivstore.supports
 
 import com.kivpson.extensions.kivstore.KivStoreModel
 import com.kivpson.extensions.kivstore.types.AbstractDataStoreType
 import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlin.reflect.KMutableProperty0
 import kotlin.reflect.jvm.isAccessible
 
-fun <T : Any> KivStoreModel.asFlow(property: KMutableProperty0<T>): Flow<T> = flow {
+fun <T : Any> KivStoreModel.asFlow(property: KMutableProperty0<T>): Flow<T> = callbackFlow {
     property.isAccessible = true
 
     val delegate = property.getDelegate().let {
@@ -22,11 +25,13 @@ fun <T : Any> KivStoreModel.asFlow(property: KMutableProperty0<T>): Flow<T> = fl
         it as AbstractDataStoreType<T>
     }
 
-    emit(delegate.readValue())
+    trySend(delegate.readValue())
 
-    dataStore.data
+    val subscription = dataStore.data
         .map { delegate.readValue() }
         .distinctUntilChanged()
-        .collect { emit(it) }
-}.buffer(Channel.BUFFERED)
+        .onEach { trySend(it) }
+        .launchIn(this)
 
+    awaitClose { subscription.cancel() }
+}.buffer(Channel.UNLIMITED)

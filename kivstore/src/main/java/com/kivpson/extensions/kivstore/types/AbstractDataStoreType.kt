@@ -1,5 +1,6 @@
 package com.kivpson.extensions.kivstore.types
 
+import com.kivpson.extensions.kivstore.KivStore
 import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

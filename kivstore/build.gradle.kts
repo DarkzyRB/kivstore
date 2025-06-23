@@ -28,6 +28,9 @@ android {
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.kotlin.reflect)
+    implementation(libs.lifecycle.livedata.core)
+    implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.datastore.preferences)
 }
 

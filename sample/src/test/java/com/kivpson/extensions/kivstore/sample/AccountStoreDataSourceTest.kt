@@ -1,6 +1,5 @@
 package com.kivpson.extensions.kivstore.sample
 
-import androidx.datastore.preferences.core.preferencesOf
 import com.kivpson.extensions.kivstore.KivStore
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -126,6 +125,10 @@ class AccountStoreDataSourceTest  {
         job.cancel()
     }
 
+    //
+    // ------------------------------------------------------------------
+    //
+
     private fun initializeKivStore() {
         println("Initialize store")
         KivStore.init(RuntimeEnvironment.getApplication())
@@ -140,12 +143,6 @@ class AccountStoreDataSourceTest  {
     private fun clearAllData() = runBlocking {
         println("Clear store")
         AccountStore.clear()
-
-        AccountStore.apply {
-            auth = false
-            id = 0
-            token = ""
-        }
     }
 
 }

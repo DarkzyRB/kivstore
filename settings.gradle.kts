@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "KivStore"
-include(":kivstore", ":flow-support", ":sample")
+include(":kivstore", ":sample")
