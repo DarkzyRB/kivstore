@@ -29,3 +29,4 @@ fun <T : Any> KivStoreModel.asFlow(property: KMutableProperty0<T>): Flow<T> = fl
         .distinctUntilChanged()
         .collect { emit(it) }
 }.buffer(Channel.BUFFERED)
+

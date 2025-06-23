@@ -139,7 +139,7 @@ class AccountStoreDataSourceTest  {
 
     private fun clearAllData() = runBlocking {
         println("Clear store")
-        AccountStore.dataStore.updateData { preferencesOf() }
+        AccountStore.clear()
 
         AccountStore.apply {
             auth = false

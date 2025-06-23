@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.kivpson.extensions.kivstore.providers.ContextProvider
 import com.kivpson.extensions.kivstore.providers.KivStorePreferenceDelegate
 import com.kivpson.extensions.kivstore.providers.StaticContextProvider
+import kotlinx.coroutines.runBlocking
 
 abstract class KivStoreModel(
     private val contextProvider: ContextProvider = StaticContextProvider
@@ -31,4 +33,12 @@ abstract class KivStoreModel(
         key: Preferences.Key<T>,
         defaultValue: T
     ) = KivStorePreferenceDelegate(dataStore, key, defaultValue)
+
+    suspend fun clear() {
+        dataStore.edit { it.clear() }
+    }
+
+    fun clearBlocking() = runBlocking {
+        clear()
+    }
 }
