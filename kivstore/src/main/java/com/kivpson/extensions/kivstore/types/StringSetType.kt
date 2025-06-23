@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-fun KivStoreModel.stringSetPref(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> =
+fun KivStoreModel.stringSetType(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> =
     StringSetType(default)
 
 

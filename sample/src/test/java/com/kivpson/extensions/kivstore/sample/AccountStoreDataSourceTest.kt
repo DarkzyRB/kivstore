@@ -85,9 +85,16 @@ class AccountStoreDataSourceTest  {
         val n = 10
         (1..n).map { i ->
             async {
+                println("Id: $i")
                 AccountStoreDataSource.id = i
             }
         }.awaitAll()
+        println("Stored id: ${AccountStoreDataSource.id}")
+        println("Restore app")
+        // Restore app
+        reinitializeKivStore()
+        delay(100)
+        println("Stored in DataStore id: ${AccountStoreDataSource.id}")
 
         assertNotEquals(0, AccountStoreDataSource.id)
     }

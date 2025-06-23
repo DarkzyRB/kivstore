@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import androidx.datastore.preferences.core.edit
 
 
-fun KivStoreModel.floatPref(default: Float = 0f): AbstractDataStoreType<Float> =
+fun KivStoreModel.floatType(default: Float = 0f): AbstractDataStoreType<Float> =
     FloatType(default)
 
 
