@@ -31,12 +31,10 @@ dependencyResolutionManagement {
 }
 ```
 
-2. Add the module(s) you want to your build.gradle.kts:
+2. Add the module to your build.gradle.kts:
 
 ```kotlin
 implementation("com.github.darkzyrb.kivstore:kivstore:v1.0.3")
-implementation("com.github.darkzyrb.kivstore:flow-support:v1.0.3")
-implementation("com.github.darkzyrb.kivstore:livedata-support:v1.0.3")
 ```
 
 ---
