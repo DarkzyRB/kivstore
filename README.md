@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/darkzyrb/kivstore.svg)](https://jitpack.io/#darkzyrb/kivstore)
 
 
-**KivStore** is a lightweight library that simplifies the use of Android's DataStore. It provides a type-safe API based on delegates for preference management and also offers an easy way to handle Flow or LiveData observers for the created models..
+**KivStore** is a lightweight library that simplifies the use of Android's DataStore. It provides a type-safe API based on delegates for preference management and also offers an easy way to handle Flow or LiveData observers for the created models.
 
 ---
 
