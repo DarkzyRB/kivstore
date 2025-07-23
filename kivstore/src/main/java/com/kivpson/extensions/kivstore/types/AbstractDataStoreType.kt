@@ -26,7 +26,7 @@ abstract class AbstractDataStoreType<T : Any>(
         get() = if (::owner.isInitialized) owner
         else throw IllegalStateException("Delegate used before initialization")
 
-    fun provideDelegate(
+    operator fun provideDelegate(
         thisRef: KivStoreModel,
         property: KProperty<*>
     ): ReadWriteProperty<KivStoreModel, T> {

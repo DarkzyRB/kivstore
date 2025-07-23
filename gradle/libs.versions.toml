@@ -1,8 +1,8 @@
 [versions]
-agp = "8.6.1"
-kotlin = "1.9.25"
-coreKtx = "1.13.1"
-mavenPublish = "0.25.3"
+agp = "8.11.1"
+kotlin = "2.1.10"
+coreKtx = "1.16.0"
+mavenPublish = "0.34.0"
 datastore = "1.1.7"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -11,8 +11,8 @@ appcompat = "1.7.1"
 material = "1.12.0"
 robolectricv = "4.15.1"
 coreKtxVersion = "1.6.1"
-lifecycleRuntimeKtx = "2.8.6"
-coroutines = "1.7.3"
+lifecycleRuntimeKtx = "2.9.2"
+coroutines = "1.10.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
