@@ -2,16 +2,11 @@ package com.kivpson.extensions.kivstore.types
 
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-
-fun KivStoreModel.stringSetType(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> =
-    StringSetType(default)
-
 
 class StringSetType(default: Set<String>): AbstractDataStoreType<Set<String>>(default) {
     override fun getFromStore(): Set<String> {

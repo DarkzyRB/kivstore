@@ -1,6 +1,5 @@
 package com.kivpson.extensions.kivstore.types
 
-import com.kivpson.extensions.kivstore.KivStore
 import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +16,8 @@ abstract class AbstractDataStoreType<T : Any>(
     private lateinit var owner: KivStoreModel
 
     protected val keyName: String
-        get() = property.name
+        get() = if (::property.isInitialized) property.name
+        else  throw IllegalStateException("Property not initialization")
 
     @Volatile
     private var cachedValue: T? = null

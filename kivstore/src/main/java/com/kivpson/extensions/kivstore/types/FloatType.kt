@@ -1,18 +1,12 @@
 package com.kivpson.extensions.kivstore.types
 
+import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.floatPreferencesKey
-import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import androidx.datastore.preferences.core.edit
-
-
-fun KivStoreModel.floatType(default: Float = 0f): AbstractDataStoreType<Float> =
-    FloatType(default)
-
+import kotlinx.coroutines.runBlocking
 
 class FloatType(default: Float): AbstractDataStoreType<Float>(default) {
     override fun getFromStore(): Float {

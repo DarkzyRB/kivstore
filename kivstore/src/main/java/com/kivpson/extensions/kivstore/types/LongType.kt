@@ -2,14 +2,11 @@ package com.kivpson.extensions.kivstore.types
 
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
-import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-
-fun KivStoreModel.longType(default: Long = 0L) = LongType(default)
 
 class LongType(default: Long) : AbstractDataStoreType<Long>(default) {
 
