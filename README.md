@@ -90,11 +90,18 @@ val currentUser = UserSettings.username
 
 **4. Observe Changes with Flow**
 
-Use asFlow() to observe preference changes reactively:
+Use asFlow() or asLiveData to observe preference changes reactively:
 
 ```kotlin
 UserSettings.asFlow(UserSettings::isPremium)
     .collect { isPremium ->
+        println("Premium status changed: $isPremium")
+    }
+```
+
+```kotlin
+UserSettings.asLiveData(UserSettings::isPremium)
+    .observe(this) { isPremium ->
         println("Premium status changed: $isPremium")
     }
 ```
