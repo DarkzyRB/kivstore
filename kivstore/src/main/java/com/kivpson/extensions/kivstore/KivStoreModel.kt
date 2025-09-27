@@ -54,11 +54,17 @@ abstract class KivStoreModel(
     // Types
     fun booleanType(default: Boolean = false) = BooleanType(default)
     fun doubleType(default: Double = 0.0) = DoubleType(default)
-    fun floatType(default: Float = 0f): AbstractDataStoreType<Float> =
-        FloatType(default)
+    fun floatType(default: Float = 0f): AbstractDataStoreType<Float> = FloatType(default)
     fun intType(default: Int = 0) = IntType(default)
     fun longType(default: Long = 0L) = LongType(default)
-    fun stringSetType(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> =
-        StringSetType(default)
+    fun stringSetType(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> = StringSetType(default)
     fun stringType(default: String = "") = StringType(default)
+
+    fun booleanPref(default: Boolean = false) = BooleanType(default)
+    fun doublePref(default: Double = 0.0) = DoubleType(default)
+    fun floatPref(default: Float = 0f): AbstractDataStoreType<Float> = FloatType(default)
+    fun intPref(default: Int = 0) = IntType(default)
+    fun longPref(default: Long = 0L) = LongType(default)
+    fun stringSetPref(default: Set<String> = LinkedHashSet()): AbstractDataStoreType<Set<String>> = StringSetType(default)
+    fun stringPref(default: String = "") = StringType(default)
 }

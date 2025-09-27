@@ -7,13 +7,19 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.FileNotFoundException
 
 class StringType(default: String) : AbstractDataStoreType<String>(default) {
 
     override fun getFromStore(): String {
         val key = stringPreferencesKey(keyName)
         return runBlocking {
-            ownerSafe.dataStore.data.first()[key] ?: default
+            try {
+                ensureStoreInitialized(key)
+                ownerSafe.dataStore.data.first()[key] ?: default
+            } catch (e: FileNotFoundException) {
+                default
+            }
         }
     }
 

@@ -7,13 +7,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import java.io.FileNotFoundException
 
 class BooleanType(default: Boolean) : AbstractDataStoreType<Boolean>(default) {
-
     override fun getFromStore(): Boolean {
         val key = booleanPreferencesKey(keyName)
         return runBlocking {
-            ownerSafe.dataStore.data.first()[key] ?: default
+            try {
+                ensureStoreInitialized(key)
+                ownerSafe.dataStore.data.first()[key] ?: default
+            } catch (e: FileNotFoundException) {
+                default
+            }
         }
     }
 

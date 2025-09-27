@@ -1,5 +1,7 @@
 package com.kivpson.extensions.kivstore.types
 
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
 import com.kivpson.extensions.kivstore.KivStoreModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -52,6 +54,14 @@ abstract class AbstractDataStoreType<T : Any>(
 
     protected abstract fun getFromStore(): T
     protected abstract fun setToStore(value: T)
+
+    protected suspend fun ensureStoreInitialized(key: Preferences.Key<T>) {
+        ownerSafe.dataStore.edit { prefs ->
+            if (!prefs.contains(key)) {
+                prefs[key] = default
+            }
+        }
+    }
 
     fun readValue(): T = getFromStore()
 }
