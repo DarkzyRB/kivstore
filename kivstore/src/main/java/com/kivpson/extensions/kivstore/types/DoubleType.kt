@@ -18,6 +18,12 @@ class DoubleType(default: Double) : AbstractDataStoreType<Double>(default) {
                 ensureStoreInitialized(key)
                 ownerSafe.dataStore.data.first()[key] ?: default
             } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+                default
+            } catch (e: ClassCastException) {
+                e.printStackTrace()
+                ownerSafe.dataStore.edit { it.remove(key) }
+
                 default
             }
         }

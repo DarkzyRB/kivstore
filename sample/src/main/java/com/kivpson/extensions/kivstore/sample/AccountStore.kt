@@ -7,4 +7,5 @@ object AccountStore : KivStoreModel(){
     var token by stringType("")
     var auth by booleanType(false)
     var connected by booleanType(false)
+    var quota by doubleType(0.0)
 }

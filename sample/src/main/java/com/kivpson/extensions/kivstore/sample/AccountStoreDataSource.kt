@@ -21,4 +21,8 @@ object AccountStoreDataSource{
     var token: String
         get() = AccountStore.token
         set(value) { AccountStore.token = value }
+
+    var quota: Double
+        get() = AccountStore.quota
+        set(value) { AccountStore.quota = value }
 }

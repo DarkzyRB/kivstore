@@ -38,6 +38,7 @@ class AccountStoreDataSourceTest  {
     fun `test set and get values`() {
         val testId = 42
         val testToken = "abcd1234"
+        val quota = 5350.65
 
         println("Initial data auth: ${AccountStoreDataSource.auth} id: ${AccountStoreDataSource.id}, token: ${AccountStoreDataSource.token}")
         println("Set data in store")
@@ -45,12 +46,14 @@ class AccountStoreDataSourceTest  {
         AccountStoreDataSource.auth = true
         AccountStoreDataSource.id = testId
         AccountStoreDataSource.token = testToken
+        AccountStoreDataSource.quota = quota
         println("Current data auth: ${AccountStoreDataSource.auth} id: ${AccountStoreDataSource.id}, token: ${AccountStoreDataSource.token}")
 
         println("Evaluation")
         assertTrue(AccountStoreDataSource.auth)
         assertEquals(testId, AccountStoreDataSource.id)
         assertEquals(testToken, AccountStoreDataSource.token)
+        assertEquals(quota, AccountStoreDataSource.quota, 0.00001)
     }
 
     @Test
@@ -58,6 +61,7 @@ class AccountStoreDataSourceTest  {
         runBlocking {
             val testId = 42
             val testToken = "abcd1234"
+            val quota = 5350.65
 
             println("Initial data auth: ${AccountStoreDataSource.auth} id: ${AccountStoreDataSource.id}, token: ${AccountStoreDataSource.token}")
 
@@ -65,6 +69,7 @@ class AccountStoreDataSourceTest  {
             AccountStoreDataSource.auth = true
             AccountStoreDataSource.id = testId
             AccountStoreDataSource.token = testToken
+            AccountStoreDataSource.quota = quota
             println("Current data auth: ${AccountStoreDataSource.auth} id: ${AccountStoreDataSource.id}, token: ${AccountStoreDataSource.token}")
 
             println("Restore app")
@@ -76,6 +81,7 @@ class AccountStoreDataSourceTest  {
             assertTrue(AccountStoreDataSource.auth)
             assertEquals(testId, AccountStoreDataSource.id)
             assertEquals(testToken, AccountStoreDataSource.token)
+            assertEquals(quota, AccountStoreDataSource.quota, 0.00001)
         }
     }
 
@@ -86,9 +92,10 @@ class AccountStoreDataSourceTest  {
             async {
                 println("Id: $i")
                 AccountStoreDataSource.id = i
+                AccountStoreDataSource.quota = (i * 12).toDouble()
             }
         }.awaitAll()
-        println("Stored id: ${AccountStoreDataSource.id}")
+        println("Stored id: ${AccountStoreDataSource.id} quota: ${AccountStoreDataSource.quota}")
         println("Restore app")
         // Restore app
         reinitializeKivStore()
@@ -96,6 +103,7 @@ class AccountStoreDataSourceTest  {
         println("Stored in DataStore id: ${AccountStoreDataSource.id}")
 
         assertNotEquals(0, AccountStoreDataSource.id)
+        assertNotEquals(0.0, AccountStoreDataSource.quota)
     }
 
     @Test
